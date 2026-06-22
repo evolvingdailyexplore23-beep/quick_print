@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrintBox</title>
+    <style>
+        /* 基礎網頁設定 */
+        body { 
+            font-family: "Microsoft JhengHei", sans-serif; 
+            background-color: #ffffff; 
+            text-align: center; 
+            margin: 0; 
+            padding: 40px 20px; 
+            color: #333;
+        }
+
+        /* 主標題 */
+        h1 { 
+            font-size: 32px; 
+            font-weight: 900; 
+            margin-bottom: 10px;
+        }
+
+        /* 流程文字 */
+        .subtitle {
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 40px;
+        }
+
+        /* 虛線卡片容器 */
+        .card {
+            max-width: 550px;
+            margin: 0 auto 30px auto;
+            padding: 30px;
+            border: 2px dashed #bbb; /* 灰色虛線外框 */
+            border-radius: 10px;
+            background-color: #fff;
+        }
+
+        /* 卡片內的標題與圖示 */
+        .card-title {
+            font-size: 24px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 5px;
+        }
+
+        .card-title span {
+            margin-right: 10px;
+            font-size: 30px;
+        }
+
+        /* 步驟說明文字 */
+        .step-text {
+            color: #666;
+            font-size: 15px;
+            margin-bottom: 20px;
+        }
+
+        /* 檔案選擇器 */
+        input[type="file"] {
+            margin: 10px 0 20px 0;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        /* 4 位數代碼輸入框 */
+        .input-code {
+            width: 180px;
+            height: 50px;
+            font-size: 24px;
+            text-align: center;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+            margin: 10px 0 20px 0;
+        }
+
+        /* 按鈕基礎樣式 */
+        .btn {
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+            width: 60%;
+        }
+
+        /* 步驟 1：藍色按鈕 */
+        .btn-blue {
+            background-color: #A2B4C0;
+        }
+        .btn-blue:hover {
+            background-color: #8EA3B0;
+        }
+
+        /* 步驟 2：綠色按鈕 */
+        .btn-green {
+            background-color: #A3B5A6;
+        }
+        .btn-green:hover {
+            background-color: #8A9A8C;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>這是一隻隨身碟🦋</h1>
+
+    <div class="card">
+        <div class="card-title">
+            <span>📥</span> 我要上傳檔案
+        </div>
+        <div class="step-text">步驟 1：在筆電上傳檔案，取得 4 位數取件碼</div>
+        
+        <form action="/upload" method="POST" enctype="multipart/form-data">
+            <input type="file" name="file" required><br>
+            <button type="submit" class="btn btn-blue">開始上傳檔案</button>
+        </form>
+    </div>
+
+    <div class="card">
+        <div class="card-title">
+            <span>📤</span> 我要下載檔案
+        </div>
+        <div class="step-text">步驟 2：輸入 4 位數取件碼，一鍵下載檔案</div>
+        <div class="step-text">( 為確保隱私，檔案將在下載後自動刪除。)</div>
+
+        <form action="/download" method="POST">
+            <input type="text" 
+                   name="code" 
+                   class="input-code" 
+                   placeholder="請輸入 4 位數取件碼" 
+                   maxlength="4" 
+                   required 
+                   autocomplete="off"><br>
+            <button type="submit" class="btn btn-green">尋找並下載檔案</button>
+        </form>
+    </div>
+
+</body>
+</html>

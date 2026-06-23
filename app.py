@@ -128,12 +128,11 @@ def upload_file():
         </div>
         """
 
-
 @app.route('/download', methods=['POST'])
 def download_file():
     user_code = request.form.get('code', '').strip()
 
-    # 五、取件碼格式檢查
+    # 取件碼格式檢查
     if not user_code.isdigit() or len(user_code) != 4:
         return """
         <div style="font-family: Arial; text-align: center; margin-top: 50px; color: #dc3545;">
@@ -190,7 +189,6 @@ def request_entity_too_large(error):
         <a href="/" style="text-decoration: none; color: #007BFF;">← 返回首頁</a>
     </div>
     """, 413
-
 
 if __name__ == '__main__':
     init_db()

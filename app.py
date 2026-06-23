@@ -179,7 +179,7 @@ def download_file():
         </div>
         """
 
-# 處理 Flask 內建的大檔案阻擋報錯（當超過 20 MB 時，優雅地網頁顯示錯誤而不是畫面崩潰）
+# 處理 Flask 內建的大檔案阻擋報錯
 @app.errorhandler(413)
 def request_entity_too_large(error):
     return """
